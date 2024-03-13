@@ -6,7 +6,7 @@
 /*   By: mareurin <mareurin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 13:49:20 by mareurin          #+#    #+#             */
-/*   Updated: 2024/02/25 17:17:38 by mareurin         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:28:35 by mareurin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_save(char *save)
 		free(save);
 		return (NULL);
 	}
-	s = malloc(sizeof(char) * (ft_strlen(save) - i + 1));
+	s = malloc(sizeof(char) * (gnl_strlen(save) - i + 1));
 	if (!s)
 		return (NULL);
 	i++;
@@ -74,7 +74,7 @@ char	*ft_read_and_save(int fd, char *save)
 	if (!buff)
 		return (NULL);
 	read_return = 1;
-	while (!ft_strchr(save, '\n') && read_return != 0)
+	while (!gnl_strchr(save, '\n') && read_return != 0)
 	{
 		read_return = read(fd, buff, BUFFER_SIZE);
 		if (read_return == 0)
@@ -86,7 +86,7 @@ char	*ft_read_and_save(int fd, char *save)
 			return (NULL);
 		}
 		buff[read_return] = '\0';
-		save = ft_strjoin(save, buff);
+		save = gnl_strjoin(save, buff);
 	}
 	free(buff);
 	return (save);
